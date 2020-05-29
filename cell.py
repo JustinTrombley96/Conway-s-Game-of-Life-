@@ -1,5 +1,6 @@
 from PIL import Image
 import os
+
 # Planning
 
 # Initialize the Map
@@ -20,7 +21,9 @@ class Cell:
         return False
     def get_print_cell(self):
         if self.is_alive():
-            return '0'
-            # return Image.open(alive_cell_20.png)
-        return '.'
-        # return Image.open(dead_cell_20.png)
+            # return '0'
+            img = Image.open("alive_cell_20.png")
+            return img.show()
+        # return '.'
+        dead_image = Image.open("dead_cell_20.png")
+        dead_image.show()
