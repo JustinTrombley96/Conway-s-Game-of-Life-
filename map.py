@@ -35,30 +35,32 @@ class Map:
         gets_killed=[]
 
         for row in range(len(self.grid)):
-            check_neighbor = self.check_neighbor(row, column)
-            living_neighbors_count = []
+            for column in range(len(self.grid[row])):
+                check_neighbor = self.check_neighbor(row, column)
 
-            for neighbor_cell in check_neighbor:
-                if neighbor_cell.is_alive():
-                    living_neighbors_count.append(neighbor_cell)
-            
-            cell_object = self.grid[row][column]
-            status_main_cell = cell_object.is_alive()
+                living_neighbors_count = []
 
-            if status_main_cell == True:
-                if len(living_neighbors_count) <2 or len(living_neighbors_count) > 3:
-                    gets_killed.append(cell_object)
-                if len(living_neighbors_count) == 3 or len(living_neighbors_count) == 2:
-                    goes_alive.append(cell_object)
+                for neighbor_cell in check_neighbor:
+                    if neighbor_cell.is_alive():
+                        living_neighbors_count.append(neighbor_cell)
                 
-            else:
-                if len(living_neighbors_count) == 3:
-                    goes_alive.append(cell_object)
+                cell_object = self.grid[row][column]
+                status_main_cell = cell_object.is_alive()
 
-        for cell_items in goes_alive:
-            cell_items.set_cells_alive()
-        for cell_items in gets_killed:
-            cell_items.set_cells_dead()
+                if status_main_cell == True:
+                    if len(living_neighbors_count) <2 or len(living_neighbors_count) > 3:
+                        gets_killed.append(cell_object)
+                    if len(living_neighbors_count) == 3 or len(living_neighbors_count) == 2:
+                        goes_alive.append(cell_object)
+                    
+                else:
+                    if len(living_neighbors_count) == 3:
+                        goes_alive.append(cell_object)
+
+            for cell_items in goes_alive:
+                cell_items.set_cells_alive()
+            for cell_items in gets_killed:
+                cell_items.set_cells_dead()
 
     def check_neighbor(self, check_row, check_column):
         search_min = -1

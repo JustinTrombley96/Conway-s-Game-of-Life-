@@ -13,12 +13,14 @@ class Cell:
     def set_cells_alive(self):
         self.status = 'Alive'
     def set_cells_dead(self):
-        set.status = 'Dead'
+        self.status = 'Dead'
     def is_alive(self):
         if self.status == 'Alive':
             return True
         return False
     def get_print_cell(self):
         if self.is_alive():
-            return Image.open(alive_cell_20.png)
-        return Image.open(dead_cell_20.png)
+            return '0'
+            # return Image.open(alive_cell_20.png)
+        return '.'
+        # return Image.open(dead_cell_20.png)
