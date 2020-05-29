@@ -1,3 +1,5 @@
+from PIL import Image
+import os
 # Planning
 
 # Initialize the Map
@@ -12,8 +14,11 @@ class Cell:
         self.status = 'Alive'
     def set_cells_dead(self):
         set.status = 'Dead'
-    def cell_check(self):
+    def is_alive(self):
         if self.status == 'Alive':
             return True
         return False
-        
+    def get_print_cell(self):
+        if self.is_alive():
+            return Image.open(alive_cell_20.png)
+        return Image.open(dead_cell_20.png)
