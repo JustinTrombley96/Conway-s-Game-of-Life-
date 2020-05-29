@@ -77,7 +77,7 @@ class Map:
                 if (neighbor_row) == check_row and (neighbor_column) == check_column:
                     valid_neighbor = False
 
-                if (neighbor_row) < 0 or (neighbor_column) == check_column:
+                if (neighbor_row) < 0 or (neighbor_row) >= self.rows:
                     valid_neighbor = False
                 
                 if (neighbor_column) < 0 or (neighbor_column) >= self.columns:
